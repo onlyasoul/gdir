@@ -2,6 +2,8 @@
 
 A Cloudflare Worker based front-end and back-end that gives you a reversed proxy for your Google Drive contents!
 
+个人基于[原版](https://github.com/workerindex/gdir)的`app.js`稍微汉化了一下
+
 [中文教程（感謝 HE-SB）](https://tech.he-sb.top/posts/usage-of-gdir/)
 
 ## Features
