@@ -1,4 +1,4 @@
-# github.com/cloudflare/cloudflare-go v0.11.6 => C:\projects\go\src\github.com\workerindex\cloudflare-go
+# github.com/cloudflare/cloudflare-go v0.11.6 => github.com/workerindex/cloudflare-go v0.11.8-0.20200526000000-4d963825dfa3
 ## explicit
 github.com/cloudflare/cloudflare-go
 # github.com/golang/protobuf v1.3.2
