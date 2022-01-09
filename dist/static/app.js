@@ -134,7 +134,7 @@
     var FolderMIME = 'application/vnd.google-apps.folder';
     var FileOrderInfos = {
         name_natural: {
-            name: 'Name',
+            name: '按名字排序',
             field: 'name_natural',
             defaultDescending: false,
             ascendingIcon: 'fa-sort-alpha-down',
@@ -143,7 +143,7 @@
             descendingQuery: 'name_natural desc,folder,modifiedTime desc',
         },
         createdTime: {
-            name: 'Created Time',
+            name: '按创建时间倒序排列',
             field: 'createdTime',
             defaultDescending: true,
             ascendingIcon: 'fa-sort-numeric-down',
@@ -152,7 +152,7 @@
             descendingQuery: 'createdTime desc,name,folder',
         },
         modifiedTime: {
-            name: 'Modified Time',
+            name: '按修改时间倒序排列',
             field: 'modifiedTime',
             defaultDescending: true,
             ascendingIcon: 'fa-sort-numeric-down',
@@ -161,7 +161,7 @@
             descendingQuery: 'modifiedTime desc,name,folder',
         },
         quotaBytesUsed: {
-            name: 'Size',
+            name: '按文件大小倒序排列',
             field: 'quotaBytesUsed',
             defaultDescending: true,
             ascendingIcon: 'fa-sort-numeric-down',
@@ -170,7 +170,7 @@
             descendingQuery: 'folder desc,quotaBytesUsed desc,name,modifiedTime desc',
         },
         folder: {
-            name: 'Folders',
+            name: '文件夹优先',
             field: 'folder',
             defaultDescending: false,
             ascendingIcon: 'fa-sort-down',
@@ -180,8 +180,8 @@
         },
     };
     var DefaultOrderChoice = {
-        field: 'modifiedTime',
-        descending: true,
+        field: 'name_natural',
+        descending: false,
     };
     var FileList = function () {
         var folderID = reactRouterDom.useParams().folderID;
@@ -357,7 +357,7 @@
         }, [isSearch, isSearch ? searchQuery : folderID]);
         return (React.createElement("div", { className: "file-list" },
             React.createElement("div", { className: "nav" },
-                React.createElement("a", { href: "/logout", className: "button" }, "Logout"),
+                React.createElement("a", { href: "/logout", className: "button" }, "退出登录"),
                 React.createElement("div", { className: "dropdown" },
                     React.createElement(reactRouterDom.Link, { to: linkWithOrder(orderBy.field, !orderBy.descending), className: "dropdown-choice" },
                         React.createElement("i", { className: "fas " + (orderBy.descending ? orderInfo.descendingIcon : orderInfo.ascendingIcon) }),
@@ -367,7 +367,7 @@
                         .map(function (info) { return (React.createElement(reactRouterDom.Link, { to: linkWithOrder(info.field, info.defaultDescending), className: "dropdown-option" },
                         React.createElement("i", { className: "fas " + (info.defaultDescending ? info.descendingIcon : info.ascendingIcon) }),
                         info.name)); }))),
-                React.createElement("input", { type: "text", className: "search-input", placeholder: "Search...", value: searchQuery, onKeyUp: function (event) {
+                React.createElement("input", { type: "text", className: "search-input", placeholder: "搜索...", value: searchQuery, onKeyUp: function (event) {
                         var search = new URLSearchParams();
                         search.set('q', searchQuery);
                         if (event.key === 'Enter') {
@@ -438,7 +438,7 @@
                         return (React.createElement("div", { className: "file-list-row" },
                             React.createElement("div", { className: "file-list-column" },
                                 React.createElement("i", { className: "fas fa-sync fa-spin" })),
-                            React.createElement("div", { className: "file-list-column" }, "Loading...")));
+                            React.createElement("div", { className: "file-list-column" }, "加载中...")));
                     }
                     if (pagingToken) {
                         return (React.createElement("a", { onClick: function () { return (isSearch ? search(files, pagingToken) : ls(files, drives, pagingToken)); }, href: "javascript:void(0)", className: "file-list-row" },
@@ -452,9 +452,9 @@
 
     var LoginForm = function () { return (React.createElement("div", { className: "central screen-height" },
         React.createElement("form", { className: "login-form central", action: "/login", method: "POST", autoComplete: "off" },
-            React.createElement("input", { name: "name", type: "text", placeholder: "Username", autoFocus: true }),
-            React.createElement("input", { name: "pass", type: "password", placeholder: "Password" }),
-            React.createElement("input", { type: "submit", value: "Login", className: "button" })))); };
+            React.createElement("input", { name: "name", type: "text", placeholder: "用户名", autoFocus: true }),
+            React.createElement("input", { name: "pass", type: "password", placeholder: "密码" }),
+            React.createElement("input", { type: "submit", value: "登录", className: "button" })))); };
 
     var Home = function () {
         var cookies = getCookies();
