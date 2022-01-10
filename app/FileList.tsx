@@ -460,7 +460,7 @@ export const FileList: React.FC<FileListProps> = () => {
                                 <div className="file-list-column">
                                     <i className="fas fa-sync"></i>
                                 </div>
-                                <div className="file-list-column file-list-load-more">Load More</div>
+                                <div className="file-list-column file-list-load-more">加载更多文件</div>
                             </a>
                         );
                     }
